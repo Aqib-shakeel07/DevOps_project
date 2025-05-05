@@ -1,0 +1,19 @@
+name: CI Pipeline
+on: [push]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate files
+        run: |
+          echo "Add validation steps here (e.g., linting)"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: website-files
+          path: src/
