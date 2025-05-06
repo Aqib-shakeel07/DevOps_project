@@ -1,0 +1,32 @@
+name: CI Pipeline
+on: [push]  # Triggers on every git push
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest  # Uses GitHub's free Linux VM
+
+    steps:
+      # Step 1: Checkout code from the repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Validate HTML (example)
+      - name: Test HTML files
+        run: |
+          echo "Checking HTML files..."
+          # Install an HTML validator (optional)
+          # sudo apt-get install tidy
+          # tidy -q -e src/index.html
+
+      # Step 3: Validate CSS (example)
+      - name: Test CSS files
+        run: |
+          echo "Checking CSS files..."
+          # Add CSS linting later if needed (e.g., stylelint)
+
+      # Step 4: Upload artifacts (optional)
+      - name: Save build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: website-files
+          path: src/  
